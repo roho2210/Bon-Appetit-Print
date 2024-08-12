@@ -1,0 +1,258 @@
+
+Log Entry : 04:39:37 a. m. viernes, 2 de agosto de 2024
+  :
+  :MySql.Data.MySqlClient.MySqlException (0x80004005): Unable to connect to any of the specified MySQL hosts.
+ ---> System.ArgumentException: The value cannot be an empty string. (Parameter 'host')
+   at System.ArgumentException.ThrowNullOrEmptyException(String argument, String paramName)
+   at System.ArgumentException.ThrowIfNullOrEmpty(String argument, String paramName)
+   at System.Net.DnsEndPoint..ctor(String host, Int32 port, AddressFamily addressFamily)
+   at System.Net.Sockets.Socket.ConnectAsync(String host, Int32 port, CancellationToken cancellationToken)
+   at System.Net.Sockets.Socket.ConnectAsync(String host, Int32 port)
+   at System.Net.Sockets.TcpClient.ConnectAsync(String host, Int32 port)
+   at MySql.Data.Common.StreamCreator.GetTcpStreamAsync(MySqlConnectionStringBuilder settings, CancellationToken cancellationToken, Boolean execAsync)
+   at MySql.Data.Common.StreamCreator.GetStreamAsync(MySqlConnectionStringBuilder settings, CancellationToken cancellationToken, Boolean execAsync)
+   at MySql.Data.MySqlClient.NativeDriver.OpenAsync(Boolean execAsync, CancellationToken cancellationToken)
+   at MySql.Data.MySqlClient.NativeDriver.OpenAsync(Boolean execAsync, CancellationToken cancellationToken)
+   at MySql.Data.MySqlClient.Driver.OpenAsync(Boolean execAsync, CancellationToken cancellationToken)
+   at MySql.Data.MySqlClient.Driver.CreateAsync(MySqlConnectionStringBuilder settings, Boolean execAsync, CancellationToken cancellationToken)
+   at MySql.Data.MySqlClient.Driver.CreateAsync(MySqlConnectionStringBuilder settings, Boolean execAsync, CancellationToken cancellationToken)
+   at MySql.Data.MySqlClient.MySqlPool.CreateNewPooledConnectionAsync(Boolean execAsync, CancellationToken cancellationToken)
+   at MySql.Data.MySqlClient.MySqlPool.GetPooledConnectionAsync(Boolean execAsync, CancellationToken cancellationToken)
+   at MySql.Data.MySqlClient.MySqlPool.TryToGetDriverAsync(Boolean execAsync, CancellationToken cancellationToken)
+   at MySql.Data.MySqlClient.MySqlPool.GetConnectionAsync(Boolean execAsync, CancellationToken cancellationToken)
+   at MySql.Data.MySqlClient.MySqlConnection.OpenAsync(Boolean execAsync, CancellationToken cancellationToken)
+   at MySql.Data.MySqlClient.MySqlConnection.Open()
+   at Test_Impreso_MySQL.Form1.OnTimedEvent(Object source, ElapsedEventArgs e) in C:\Users\carlo\source\repos\Test Impreso MySQL\Test Impreso MySQL\Form1.cs:line 135
+-------------------------------
+
+Log Entry : 04:41:15 a. m. viernes, 2 de agosto de 2024
+  :
+  :MySql.Data.MySqlClient.MySqlException (0x80004005): Unable to connect to any of the specified MySQL hosts.
+ ---> System.ArgumentException: The value cannot be an empty string. (Parameter 'host')
+   at System.ArgumentException.ThrowNullOrEmptyException(String argument, String paramName)
+   at System.ArgumentException.ThrowIfNullOrEmpty(String argument, String paramName)
+   at System.Net.DnsEndPoint..ctor(String host, Int32 port, AddressFamily addressFamily)
+   at System.Net.Sockets.Socket.ConnectAsync(String host, Int32 port, CancellationToken cancellationToken)
+   at System.Net.Sockets.Socket.ConnectAsync(String host, Int32 port)
+   at System.Net.Sockets.TcpClient.ConnectAsync(String host, Int32 port)
+   at MySql.Data.Common.StreamCreator.GetTcpStreamAsync(MySqlConnectionStringBuilder settings, CancellationToken cancellationToken, Boolean execAsync)
+   at MySql.Data.Common.StreamCreator.GetStreamAsync(MySqlConnectionStringBuilder settings, CancellationToken cancellationToken, Boolean execAsync)
+   at MySql.Data.MySqlClient.NativeDriver.OpenAsync(Boolean execAsync, CancellationToken cancellationToken)
+   at MySql.Data.MySqlClient.NativeDriver.OpenAsync(Boolean execAsync, CancellationToken cancellationToken)
+   at MySql.Data.MySqlClient.Driver.OpenAsync(Boolean execAsync, CancellationToken cancellationToken)
+   at MySql.Data.MySqlClient.Driver.CreateAsync(MySqlConnectionStringBuilder settings, Boolean execAsync, CancellationToken cancellationToken)
+   at MySql.Data.MySqlClient.Driver.CreateAsync(MySqlConnectionStringBuilder settings, Boolean execAsync, CancellationToken cancellationToken)
+   at MySql.Data.MySqlClient.MySqlPool.CreateNewPooledConnectionAsync(Boolean execAsync, CancellationToken cancellationToken)
+   at MySql.Data.MySqlClient.MySqlPool.GetPooledConnectionAsync(Boolean execAsync, CancellationToken cancellationToken)
+   at MySql.Data.MySqlClient.MySqlPool.TryToGetDriverAsync(Boolean execAsync, CancellationToken cancellationToken)
+   at MySql.Data.MySqlClient.MySqlPool.GetConnectionAsync(Boolean execAsync, CancellationToken cancellationToken)
+   at MySql.Data.MySqlClient.MySqlConnection.OpenAsync(Boolean execAsync, CancellationToken cancellationToken)
+   at MySql.Data.MySqlClient.MySqlConnection.Open()
+   at Test_Impreso_MySQL.Form1.OnTimedEvent(Object source, ElapsedEventArgs e) in C:\Users\carlo\source\repos\Test Impreso MySQL\Test Impreso MySQL\Form1.cs:line 135
+-------------------------------
+
+Log Entry : 04:41:25 a. m. viernes, 2 de agosto de 2024
+  :
+  :MySql.Data.MySqlClient.MySqlException (0x80004005): Unable to connect to any of the specified MySQL hosts.
+ ---> System.ArgumentException: The value cannot be an empty string. (Parameter 'host')
+   at System.ArgumentException.ThrowNullOrEmptyException(String argument, String paramName)
+   at System.ArgumentException.ThrowIfNullOrEmpty(String argument, String paramName)
+   at System.Net.DnsEndPoint..ctor(String host, Int32 port, AddressFamily addressFamily)
+   at System.Net.Sockets.Socket.ConnectAsync(String host, Int32 port, CancellationToken cancellationToken)
+   at System.Net.Sockets.Socket.ConnectAsync(String host, Int32 port)
+   at System.Net.Sockets.TcpClient.ConnectAsync(String host, Int32 port)
+   at MySql.Data.Common.StreamCreator.GetTcpStreamAsync(MySqlConnectionStringBuilder settings, CancellationToken cancellationToken, Boolean execAsync)
+   at MySql.Data.Common.StreamCreator.GetStreamAsync(MySqlConnectionStringBuilder settings, CancellationToken cancellationToken, Boolean execAsync)
+   at MySql.Data.MySqlClient.NativeDriver.OpenAsync(Boolean execAsync, CancellationToken cancellationToken)
+   at MySql.Data.MySqlClient.NativeDriver.OpenAsync(Boolean execAsync, CancellationToken cancellationToken)
+   at MySql.Data.MySqlClient.Driver.OpenAsync(Boolean execAsync, CancellationToken cancellationToken)
+   at MySql.Data.MySqlClient.Driver.CreateAsync(MySqlConnectionStringBuilder settings, Boolean execAsync, CancellationToken cancellationToken)
+   at MySql.Data.MySqlClient.Driver.CreateAsync(MySqlConnectionStringBuilder settings, Boolean execAsync, CancellationToken cancellationToken)
+   at MySql.Data.MySqlClient.MySqlPool.CreateNewPooledConnectionAsync(Boolean execAsync, CancellationToken cancellationToken)
+   at MySql.Data.MySqlClient.MySqlPool.GetPooledConnectionAsync(Boolean execAsync, CancellationToken cancellationToken)
+   at MySql.Data.MySqlClient.MySqlPool.TryToGetDriverAsync(Boolean execAsync, CancellationToken cancellationToken)
+   at MySql.Data.MySqlClient.MySqlPool.GetConnectionAsync(Boolean execAsync, CancellationToken cancellationToken)
+   at MySql.Data.MySqlClient.MySqlConnection.OpenAsync(Boolean execAsync, CancellationToken cancellationToken)
+   at MySql.Data.MySqlClient.MySqlConnection.Open()
+   at Test_Impreso_MySQL.Form1.OnTimedEvent(Object source, ElapsedEventArgs e) in C:\Users\carlo\source\repos\Test Impreso MySQL\Test Impreso MySQL\Form1.cs:line 135
+-------------------------------
+
+Log Entry : 04:43:02 a. m. viernes, 2 de agosto de 2024
+  :
+  :MySql.Data.MySqlClient.MySqlException (0x80004005): Unable to connect to any of the specified MySQL hosts.
+ ---> System.ArgumentException: The value cannot be an empty string. (Parameter 'host')
+   at System.ArgumentException.ThrowNullOrEmptyException(String argument, String paramName)
+   at System.ArgumentException.ThrowIfNullOrEmpty(String argument, String paramName)
+   at System.Net.DnsEndPoint..ctor(String host, Int32 port, AddressFamily addressFamily)
+   at System.Net.Sockets.Socket.ConnectAsync(String host, Int32 port, CancellationToken cancellationToken)
+   at System.Net.Sockets.Socket.ConnectAsync(String host, Int32 port)
+   at System.Net.Sockets.TcpClient.ConnectAsync(String host, Int32 port)
+   at MySql.Data.Common.StreamCreator.GetTcpStreamAsync(MySqlConnectionStringBuilder settings, CancellationToken cancellationToken, Boolean execAsync)
+   at MySql.Data.Common.StreamCreator.GetStreamAsync(MySqlConnectionStringBuilder settings, CancellationToken cancellationToken, Boolean execAsync)
+   at MySql.Data.MySqlClient.NativeDriver.OpenAsync(Boolean execAsync, CancellationToken cancellationToken)
+   at MySql.Data.MySqlClient.NativeDriver.OpenAsync(Boolean execAsync, CancellationToken cancellationToken)
+   at MySql.Data.MySqlClient.Driver.OpenAsync(Boolean execAsync, CancellationToken cancellationToken)
+   at MySql.Data.MySqlClient.Driver.CreateAsync(MySqlConnectionStringBuilder settings, Boolean execAsync, CancellationToken cancellationToken)
+   at MySql.Data.MySqlClient.Driver.CreateAsync(MySqlConnectionStringBuilder settings, Boolean execAsync, CancellationToken cancellationToken)
+   at MySql.Data.MySqlClient.MySqlPool.CreateNewPooledConnectionAsync(Boolean execAsync, CancellationToken cancellationToken)
+   at MySql.Data.MySqlClient.MySqlPool.GetPooledConnectionAsync(Boolean execAsync, CancellationToken cancellationToken)
+   at MySql.Data.MySqlClient.MySqlPool.TryToGetDriverAsync(Boolean execAsync, CancellationToken cancellationToken)
+   at MySql.Data.MySqlClient.MySqlPool.GetConnectionAsync(Boolean execAsync, CancellationToken cancellationToken)
+   at MySql.Data.MySqlClient.MySqlConnection.OpenAsync(Boolean execAsync, CancellationToken cancellationToken)
+   at MySql.Data.MySqlClient.MySqlConnection.Open()
+   at Test_Impreso_MySQL.Form1.OnTimedEvent(Object source, ElapsedEventArgs e) in C:\Users\carlo\source\repos\Test Impreso MySQL\Test Impreso MySQL\Form1.cs:line 135
+-------------------------------
+
+Log Entry : 04:44:39 a. m. viernes, 2 de agosto de 2024
+  :
+  :MySql.Data.MySqlClient.MySqlException (0x80004005): Unable to connect to any of the specified MySQL hosts.
+ ---> System.ArgumentException: The value cannot be an empty string. (Parameter 'host')
+   at System.ArgumentException.ThrowNullOrEmptyException(String argument, String paramName)
+   at System.ArgumentException.ThrowIfNullOrEmpty(String argument, String paramName)
+   at System.Net.DnsEndPoint..ctor(String host, Int32 port, AddressFamily addressFamily)
+   at System.Net.Sockets.Socket.ConnectAsync(String host, Int32 port, CancellationToken cancellationToken)
+   at System.Net.Sockets.Socket.ConnectAsync(String host, Int32 port)
+   at System.Net.Sockets.TcpClient.ConnectAsync(String host, Int32 port)
+   at MySql.Data.Common.StreamCreator.GetTcpStreamAsync(MySqlConnectionStringBuilder settings, CancellationToken cancellationToken, Boolean execAsync)
+   at MySql.Data.Common.StreamCreator.GetStreamAsync(MySqlConnectionStringBuilder settings, CancellationToken cancellationToken, Boolean execAsync)
+   at MySql.Data.MySqlClient.NativeDriver.OpenAsync(Boolean execAsync, CancellationToken cancellationToken)
+   at MySql.Data.MySqlClient.NativeDriver.OpenAsync(Boolean execAsync, CancellationToken cancellationToken)
+   at MySql.Data.MySqlClient.Driver.OpenAsync(Boolean execAsync, CancellationToken cancellationToken)
+   at MySql.Data.MySqlClient.Driver.CreateAsync(MySqlConnectionStringBuilder settings, Boolean execAsync, CancellationToken cancellationToken)
+   at MySql.Data.MySqlClient.Driver.CreateAsync(MySqlConnectionStringBuilder settings, Boolean execAsync, CancellationToken cancellationToken)
+   at MySql.Data.MySqlClient.MySqlPool.CreateNewPooledConnectionAsync(Boolean execAsync, CancellationToken cancellationToken)
+   at MySql.Data.MySqlClient.MySqlPool.GetPooledConnectionAsync(Boolean execAsync, CancellationToken cancellationToken)
+   at MySql.Data.MySqlClient.MySqlPool.TryToGetDriverAsync(Boolean execAsync, CancellationToken cancellationToken)
+   at MySql.Data.MySqlClient.MySqlPool.GetConnectionAsync(Boolean execAsync, CancellationToken cancellationToken)
+   at MySql.Data.MySqlClient.MySqlConnection.OpenAsync(Boolean execAsync, CancellationToken cancellationToken)
+   at MySql.Data.MySqlClient.MySqlConnection.Open()
+   at Test_Impreso_MySQL.Form1.OnTimedEvent(Object source, ElapsedEventArgs e)
+-------------------------------
+
+Log Entry : 04:49:07 a. m. viernes, 2 de agosto de 2024
+  :
+  :MySql.Data.MySqlClient.MySqlException (0x80004005): Unable to connect to any of the specified MySQL hosts.
+ ---> System.ArgumentException: The value cannot be an empty string. (Parameter 'host')
+   at System.ArgumentException.ThrowNullOrEmptyException(String argument, String paramName)
+   at System.ArgumentException.ThrowIfNullOrEmpty(String argument, String paramName)
+   at System.Net.DnsEndPoint..ctor(String host, Int32 port, AddressFamily addressFamily)
+   at System.Net.Sockets.Socket.ConnectAsync(String host, Int32 port, CancellationToken cancellationToken)
+   at System.Net.Sockets.Socket.ConnectAsync(String host, Int32 port)
+   at System.Net.Sockets.TcpClient.ConnectAsync(String host, Int32 port)
+   at MySql.Data.Common.StreamCreator.GetTcpStreamAsync(MySqlConnectionStringBuilder settings, CancellationToken cancellationToken, Boolean execAsync)
+   at MySql.Data.Common.StreamCreator.GetStreamAsync(MySqlConnectionStringBuilder settings, CancellationToken cancellationToken, Boolean execAsync)
+   at MySql.Data.MySqlClient.NativeDriver.OpenAsync(Boolean execAsync, CancellationToken cancellationToken)
+   at MySql.Data.MySqlClient.NativeDriver.OpenAsync(Boolean execAsync, CancellationToken cancellationToken)
+   at MySql.Data.MySqlClient.Driver.OpenAsync(Boolean execAsync, CancellationToken cancellationToken)
+   at MySql.Data.MySqlClient.Driver.CreateAsync(MySqlConnectionStringBuilder settings, Boolean execAsync, CancellationToken cancellationToken)
+   at MySql.Data.MySqlClient.Driver.CreateAsync(MySqlConnectionStringBuilder settings, Boolean execAsync, CancellationToken cancellationToken)
+   at MySql.Data.MySqlClient.MySqlPool.CreateNewPooledConnectionAsync(Boolean execAsync, CancellationToken cancellationToken)
+   at MySql.Data.MySqlClient.MySqlPool.GetPooledConnectionAsync(Boolean execAsync, CancellationToken cancellationToken)
+   at MySql.Data.MySqlClient.MySqlPool.TryToGetDriverAsync(Boolean execAsync, CancellationToken cancellationToken)
+   at MySql.Data.MySqlClient.MySqlPool.GetConnectionAsync(Boolean execAsync, CancellationToken cancellationToken)
+   at MySql.Data.MySqlClient.MySqlConnection.OpenAsync(Boolean execAsync, CancellationToken cancellationToken)
+   at MySql.Data.MySqlClient.MySqlConnection.Open()
+   at Test_Impreso_MySQL.Form1.OnTimedEvent(Object source, ElapsedEventArgs e)
+-------------------------------
+
+Log Entry : 04:49:09 a. m. viernes, 2 de agosto de 2024
+  :
+  :MySql.Data.MySqlClient.MySqlException (0x80004005): Unable to connect to any of the specified MySQL hosts.
+ ---> System.ArgumentException: The value cannot be an empty string. (Parameter 'host')
+   at System.ArgumentException.ThrowNullOrEmptyException(String argument, String paramName)
+   at System.ArgumentException.ThrowIfNullOrEmpty(String argument, String paramName)
+   at System.Net.DnsEndPoint..ctor(String host, Int32 port, AddressFamily addressFamily)
+   at System.Net.Sockets.Socket.ConnectAsync(String host, Int32 port, CancellationToken cancellationToken)
+   at System.Net.Sockets.Socket.ConnectAsync(String host, Int32 port)
+   at System.Net.Sockets.TcpClient.ConnectAsync(String host, Int32 port)
+   at MySql.Data.Common.StreamCreator.GetTcpStreamAsync(MySqlConnectionStringBuilder settings, CancellationToken cancellationToken, Boolean execAsync)
+   at MySql.Data.Common.StreamCreator.GetStreamAsync(MySqlConnectionStringBuilder settings, CancellationToken cancellationToken, Boolean execAsync)
+   at MySql.Data.MySqlClient.NativeDriver.OpenAsync(Boolean execAsync, CancellationToken cancellationToken)
+   at MySql.Data.MySqlClient.NativeDriver.OpenAsync(Boolean execAsync, CancellationToken cancellationToken)
+   at MySql.Data.MySqlClient.Driver.OpenAsync(Boolean execAsync, CancellationToken cancellationToken)
+   at MySql.Data.MySqlClient.Driver.CreateAsync(MySqlConnectionStringBuilder settings, Boolean execAsync, CancellationToken cancellationToken)
+   at MySql.Data.MySqlClient.Driver.CreateAsync(MySqlConnectionStringBuilder settings, Boolean execAsync, CancellationToken cancellationToken)
+   at MySql.Data.MySqlClient.MySqlPool.CreateNewPooledConnectionAsync(Boolean execAsync, CancellationToken cancellationToken)
+   at MySql.Data.MySqlClient.MySqlPool.GetPooledConnectionAsync(Boolean execAsync, CancellationToken cancellationToken)
+   at MySql.Data.MySqlClient.MySqlPool.TryToGetDriverAsync(Boolean execAsync, CancellationToken cancellationToken)
+   at MySql.Data.MySqlClient.MySqlPool.GetConnectionAsync(Boolean execAsync, CancellationToken cancellationToken)
+   at MySql.Data.MySqlClient.MySqlConnection.OpenAsync(Boolean execAsync, CancellationToken cancellationToken)
+   at MySql.Data.MySqlClient.MySqlConnection.Open()
+   at Test_Impreso_MySQL.Form1.OnTimedEvent(Object source, ElapsedEventArgs e)
+-------------------------------
+
+Log Entry : 09:22:58 a. m. viernes, 2 de agosto de 2024
+  :
+  :MySql.Data.MySqlClient.MySqlException (0x80004005): Can't create more than max_prepared_stmt_count statements (current value: 16382)
+   at MySql.Data.MySqlClient.MySqlStream.ReadPacketAsync(Boolean execAsync)
+   at MySql.Data.MySqlClient.NativeDriver.PrepareStatementAsync(String sql, Boolean execAsync)
+   at MySql.Data.MySqlClient.Driver.PrepareStatementAsync(String sql, Boolean execAsync)
+   at MySql.Data.MySqlClient.PreparableStatement.PrepareAsync(Boolean execAsync)
+   at MySql.Data.MySqlClient.MySqlCommand.PrepareAsync(Boolean execAsync, CancellationToken cancellationToken)
+   at MySql.Data.MySqlClient.MySqlCommand.Prepare()
+   at Test_Impreso_MySQL.Form1.OnTimedEvent(Object source, ElapsedEventArgs e)
+-------------------------------
+
+Log Entry : 09:50:28 a. m. viernes, 2 de agosto de 2024
+  :
+  :MySql.Data.MySqlClient.MySqlException (0x80004005): Can't create more than max_prepared_stmt_count statements (current value: 15)
+   at MySql.Data.MySqlClient.MySqlStream.ReadPacketAsync(Boolean execAsync)
+   at MySql.Data.MySqlClient.NativeDriver.PrepareStatementAsync(String sql, Boolean execAsync)
+   at MySql.Data.MySqlClient.Driver.PrepareStatementAsync(String sql, Boolean execAsync)
+   at MySql.Data.MySqlClient.PreparableStatement.PrepareAsync(Boolean execAsync)
+   at MySql.Data.MySqlClient.MySqlCommand.PrepareAsync(Boolean execAsync, CancellationToken cancellationToken)
+   at MySql.Data.MySqlClient.MySqlCommand.Prepare()
+   at Test_Impreso_MySQL.Form1.OnTimedEvent(Object source, ElapsedEventArgs e) in C:\Users\carlo\source\repos\Test Impreso MySQL\Test Impreso MySQL\Form1.cs:line 144
+-------------------------------
+
+Log Entry : 09:51:46 a. m. viernes, 2 de agosto de 2024
+  :
+  :System.InvalidOperationException: The connection is already open.
+   at MySql.Data.MySqlClient.Interceptors.ExceptionInterceptor.Throw(Exception exception)
+   at MySql.Data.MySqlClient.MySqlConnection.Throw(Exception ex)
+   at MySql.Data.MySqlClient.MySqlConnection.OpenAsync(Boolean execAsync, CancellationToken cancellationToken)
+   at MySql.Data.MySqlClient.MySqlConnection.Open()
+   at Test_Impreso_MySQL.Form1.OnTimedEvent(Object source, ElapsedEventArgs e) in C:\Users\carlo\source\repos\Test Impreso MySQL\Test Impreso MySQL\Form1.cs:line 135
+-------------------------------
+
+Log Entry : 09:51:51 a. m. viernes, 2 de agosto de 2024
+  :
+  :System.InvalidOperationException: The connection is already open.
+   at MySql.Data.MySqlClient.Interceptors.ExceptionInterceptor.Throw(Exception exception)
+   at MySql.Data.MySqlClient.MySqlConnection.Throw(Exception ex)
+   at MySql.Data.MySqlClient.MySqlConnection.OpenAsync(Boolean execAsync, CancellationToken cancellationToken)
+   at MySql.Data.MySqlClient.MySqlConnection.Open()
+   at Test_Impreso_MySQL.Form1.OnTimedEvent(Object source, ElapsedEventArgs e) in C:\Users\carlo\source\repos\Test Impreso MySQL\Test Impreso MySQL\Form1.cs:line 135
+-------------------------------
+
+Log Entry : 09:52:33 a. m. viernes, 2 de agosto de 2024
+  :
+  :MySql.Data.MySqlClient.MySqlException (0x80004005): Got packets out of order
+   at MySql.Data.MySqlClient.MySqlStream.ReadPacketAsync(Boolean execAsync)
+   at MySql.Data.MySqlClient.NativeDriver.FetchDataRowAsync(Int32 statementId, Int32 columns, Boolean execAsync)
+   at MySql.Data.MySqlClient.Driver.FetchDataRowAsync(Int32 statementId, Int32 columns, Boolean execAsync)
+   at MySql.Data.MySqlClient.Driver.SkipDataRowAsync(Boolean execAsync)
+   at MySql.Data.MySqlClient.ResultSet.CloseAsync(Boolean execAsync)
+   at MySql.Data.MySqlClient.MySqlDataReader.NextResultAsync(Boolean execAsync, CancellationToken cancellationToken)
+   at MySql.Data.MySqlClient.MySqlDataReader.CloseAsync(Boolean execAsync)
+   at MySql.Data.MySqlClient.MySqlDataReader.Close()
+   at MySql.Data.MySqlClient.MySqlConnection.CloseAsync(Boolean execAsync)
+   at MySql.Data.MySqlClient.MySqlConnection.Close()
+   at Test_Impreso_MySQL.Form1.OnTimedEvent(Object source, ElapsedEventArgs e) in C:\Users\carlo\source\repos\Test Impreso MySQL\Test Impreso MySQL\Form1.cs:line 152
+-------------------------------
+
+Log Entry : 09:53:07 a. m. viernes, 2 de agosto de 2024
+  :
+  :MySql.Data.MySqlClient.MySqlException (0x80004005): Got packets out of order
+   at MySql.Data.MySqlClient.MySqlStream.ReadPacketAsync(Boolean execAsync)
+   at MySql.Data.MySqlClient.NativeDriver.FetchDataRowAsync(Int32 statementId, Int32 columns, Boolean execAsync)
+   at MySql.Data.MySqlClient.Driver.FetchDataRowAsync(Int32 statementId, Int32 columns, Boolean execAsync)
+   at MySql.Data.MySqlClient.Driver.SkipDataRowAsync(Boolean execAsync)
+   at MySql.Data.MySqlClient.ResultSet.CloseAsync(Boolean execAsync)
+   at MySql.Data.MySqlClient.MySqlDataReader.NextResultAsync(Boolean execAsync, CancellationToken cancellationToken)
+   at MySql.Data.MySqlClient.MySqlDataReader.CloseAsync(Boolean execAsync)
+   at MySql.Data.MySqlClient.MySqlDataReader.Close()
+   at MySql.Data.MySqlClient.MySqlConnection.CloseAsync(Boolean execAsync)
+   at MySql.Data.MySqlClient.MySqlConnection.Close()
+   at Test_Impreso_MySQL.Form1.OnTimedEvent(Object source, ElapsedEventArgs e) in C:\Users\carlo\source\repos\Test Impreso MySQL\Test Impreso MySQL\Form1.cs:line 152
+-------------------------------

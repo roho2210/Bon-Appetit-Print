@@ -1,0 +1,8 @@
+C:\Users\carlo\OneDrive\Documents\BonPrint\BonPrint.pdb
+C:\Users\carlo\OneDrive\Documents\BonPrint\BonPrint.dll.config
+C:\Users\carlo\OneDrive\Documents\BonPrint\D3DCompiler_47_cor3.dll
+C:\Users\carlo\OneDrive\Documents\BonPrint\PenImc_cor3.dll
+C:\Users\carlo\OneDrive\Documents\BonPrint\PresentationNative_cor3.dll
+C:\Users\carlo\OneDrive\Documents\BonPrint\vcruntime140_cor3.dll
+C:\Users\carlo\OneDrive\Documents\BonPrint\wpfgfx_cor3.dll
+C:\Users\carlo\OneDrive\Documents\BonPrint\BonPrint.exe
