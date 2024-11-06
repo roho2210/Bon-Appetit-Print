@@ -62,12 +62,35 @@ namespace BonPrint.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("1")]
-        public int currentTurn {
+        public int CurrentTurn {
             get {
-                return ((int)(this["currentTurn"]));
+                return ((int)(this["CurrentTurn"]));
             }
             set {
-                this["currentTurn"] = value;
+                this["CurrentTurn"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string TableDataXML {
+            get {
+                return ((string)(this["TableDataXML"]));
+            }
+            set {
+                this["TableDataXML"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        public global::System.DateTime LastRestartDate {
+            get {
+                return ((global::System.DateTime)(this["LastRestartDate"]));
+            }
+            set {
+                this["LastRestartDate"] = value;
             }
         }
     }

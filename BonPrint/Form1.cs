@@ -5,6 +5,8 @@ using System.Dynamic;
 using System.Data;
 using System.Reflection;
 using System.Security.Cryptography;
+using MySqlX.XDevAPI.Relational;
+using System.Globalization;
 
 namespace BonPrint
 {
@@ -18,27 +20,31 @@ namespace BonPrint
         bool printedColumnExist = false;
         System.Timers.Timer aTimer;
         DataTable dt = new DataTable();
-        int turnsCounter = Properties.Settings.Default.currentTurn;
+        int turnsCounter = Properties.Settings.Default.CurrentTurn;
         string tableName = "";
         string locationText = Properties.Settings.Default.LocationText;
         bool isMonitorRunning = false;
+        StringWriter writer = new StringWriter();
+        DateTime lastRestartDate = Properties.Settings.Default.LastRestartDate;
 
         public MainForm()
         {
             System.Text.EncodingProvider ppp = System.Text.CodePagesEncodingProvider.Instance;
             Encoding.RegisterProvider(ppp);
             InitializeComponent();
-
             printerNameTbox.Text = Properties.Settings.Default.PrinterName;
             tableName = "t_lg" + DateTime.Now.ToString("yyyyMM");
+            dt.TableName = "Historial de tickets";
             dt.Columns.Add("Nombre", typeof(string));
-            dt.Columns.Add("Tarjeta", typeof(string));
+            dt.Columns.Add("Empleado", typeof(string));
             dt.Columns.Add("Hora", typeof(string));
             dt.Columns.Add("Turno", typeof(string));
+            dt.Columns.Add("Consumo", typeof(string));
             dataGridView1.DataSource = dt;
 
             string printerName = Properties.Settings.Default.PrinterName;
             string connectionString = Properties.Settings.Default.ConnectionString;
+            string tableDataXML = Properties.Settings.Default.TableDataXML;
             if (connectionString != "")
             {
                 connectionString = System.Text.Encoding.UTF8.GetString(Unprotect(System.Convert.FromBase64String(connectionString)));
@@ -53,6 +59,18 @@ namespace BonPrint
                 locationTbox.Text = locationText;
                 locationTbox.Enabled = false;
                 locationSaveBtn.Text = "Eliminar localización";
+            }
+            if(tableDataXML != "")
+            {
+                StringReader reader = new StringReader(tableDataXML);
+                dt.ReadXml(reader);
+            }
+            if(lastRestartDate != DateTime.MinValue) {
+                lastResetDateLbl.Text = "Desde " +lastRestartDate.ToString("g", new CultureInfo("es-MX"));
+            }
+            if(turnsCounter > 1)
+            {
+                turnsLbl.Text = "Turno " + (turnsCounter -1);
             }
         }
         private void OnTimedEvent(Object source, System.Timers.ElapsedEventArgs e)
@@ -77,11 +95,26 @@ namespace BonPrint
                 }
                 catch (Exception ex)
                 {
-                    System.Diagnostics.Debug.WriteLine(ex.ToString());
-                    MessageBox.Show("Hubo un error al revisar si la tabla de registro del mes actual existe.", "Error");
                     cnn.Close();
+                    System.Diagnostics.Debug.WriteLine(ex.ToString());
+                    this.LogWriter(ex.ToString());
                     aTimer.Stop();
-                    monitorBtn.Text = "Iniciar monitoreo del lector";
+                    MessageBox.Show("Hubo un error al revisar si la tabla de registro del mes actual existe.", "Error");
+                    if (InvokeRequired)
+                    {
+                        this.Invoke(new Action(() =>
+                        {
+                            this.isMonitorRunning = false;
+                            monitorBtn.Text = "Iniciar monitoreo del lector";
+                            monitorBtn.BackColor = Color.PaleGreen;
+                        }));
+                    }
+                    else
+                    {
+                        this.isMonitorRunning = false;
+                        monitorBtn.Text = "Iniciar monitoreo del lector";
+                        monitorBtn.BackColor = Color.PaleGreen;
+                    }
                     return;
                 }
             }
@@ -109,14 +142,50 @@ namespace BonPrint
                 }
                 catch (Exception ex)
                 {
+                    cnn.Close();
                     System.Diagnostics.Debug.WriteLine(ex.ToString());
+                    this.LogWriter(ex.ToString());
+                    aTimer.Stop();
                     MessageBox.Show("Hubo un error al revisar si la columna \"PRINTED\" existe.", "Error");
-                    throw;
+                    if (InvokeRequired)
+                    {
+                        this.Invoke(new Action(() =>
+                        {
+                            this.isMonitorRunning = false;
+                            monitorBtn.Text = "Iniciar monitoreo del lector";
+                            monitorBtn.BackColor = Color.PaleGreen;
+                        }));
+                    }
+                    else
+                    {
+                        this.isMonitorRunning = false;
+                        monitorBtn.Text = "Iniciar monitoreo del lector";
+                        monitorBtn.BackColor = Color.PaleGreen;
+                    }
+                    return;
                 }
             }
 
             try
             {
+                if ((lastRestartDate < DateTime.Today.AddHours(10).AddMinutes(00)) && (DateTime.Now > DateTime.Today.AddHours(10).AddMinutes(00)))
+                {
+                    resetHistory();
+                    lastRestartDate = DateTime.Now;
+                    if (InvokeRequired)
+                    {
+                        this.Invoke(new Action(() =>
+                        {
+                            lastResetDateLbl.Text = "Desde " + lastRestartDate.ToString("g", new CultureInfo("es-MX"));
+                        }));
+                    }
+                    else
+                    {
+                        lastResetDateLbl.Text = "Desde " + lastRestartDate.ToString("g", new CultureInfo("es-MX"));
+                    }
+                    Properties.Settings.Default.LastRestartDate = lastRestartDate;
+                    Properties.Settings.Default.Save();
+                }
                 dynamic ticketInfo = new ExpandoObject();
                 cnn.Open();
                 string commandText =
@@ -135,12 +204,10 @@ namespace BonPrint
                         cnn.Close();
                         return;
                     }
-                    System.Diagnostics.Debug.WriteLine(lastCardSuccesfulReadReader["USRID"]);
                     ticketInfo.eventLogId = lastCardSuccesfulReadReader["EVTLGUID"];
                     ticketInfo.UserId = lastCardSuccesfulReadReader["USRID"];
-                    System.Diagnostics.Debug.WriteLine(lastCardSuccesfulReadReader["NM"]);
                     ticketInfo.NM = lastCardSuccesfulReadReader["NM"];
-                    ticketInfo.CRDCSN = lastCardSuccesfulReadReader["CRDCSN"];
+                    ticketInfo.USRID = lastCardSuccesfulReadReader["USRID"];
                     cnn.Close();
                 }
                 else
@@ -149,7 +216,8 @@ namespace BonPrint
                     cnn.Close();
                     return;
                 }
-
+                int consuptionNumber = dt.Select("Empleado = '"+ ticketInfo.USRID + "'").Length + 1;
+                
                 printer.Clear();
                 printer.DoubleWidth2();
                 printer.AlignCenter();
@@ -157,15 +225,16 @@ namespace BonPrint
                 printer.Append("  ");
                 printer.Append("  ");
                 printer.Append(ticketInfo.NM);
-                printer.Append(ticketInfo.CRDCSN);
-                printer.Append(DateTime.Now.ToString("t"));
+                printer.Append(ticketInfo.USRID);
+                printer.Append(DateTime.Now.ToString("g", new CultureInfo("es-MX")));
                 printer.Append("Turno " + turnsCounter);
                 printer.Append(locationText);
+                printer.Append("Consumo " + consuptionNumber);
                 printer.Append("  ");
                 printer.Append("  ");
                 printer.FullPaperCut();
                 printer.PrintDocument();
-
+                
                 cnn.Open();
                 MySqlCommand updatePrintedColumn = new MySqlCommand("UPDATE " + tableName + " SET printed = 1 WHERE EVTLGUID = " + ticketInfo.eventLogId + ";", cnn);
                 updatePrintedColumn.ExecuteNonQuery();
@@ -174,26 +243,22 @@ namespace BonPrint
                 {
                     this.Invoke(new Action(() =>
                     {
-                        dt.Rows.Add(new object[] { ticketInfo.NM, ticketInfo.CRDCSN, DateTime.Now.ToString("t"), turnsCounter });
-                    }));
-                }
-                else
-                {
-                    dt.Rows.Add(new object[] { ticketInfo.NM, ticketInfo.CRDCSN, DateTime.Now.ToString("t"), turnsCounter });
-                }
-                if (InvokeRequired)
-                {
-                    this.Invoke(new Action(() =>
-                    {
+                        dt.Rows.Add(new object[] { ticketInfo.NM, ticketInfo.USRID, DateTime.Now.ToString("t"), turnsCounter, consuptionNumber });
                         turnsLbl.Text = "Turno " + turnsCounter;
                     }));
                 }
                 else
                 {
+                    dt.Rows.Add(new object[] { ticketInfo.NM, ticketInfo.USRID, DateTime.Now.ToString("t"), turnsCounter, consuptionNumber });
                     turnsLbl.Text = "Turno " + turnsCounter;
                 }
+
+                writer.GetStringBuilder().Clear();
+                dt.WriteXml(writer);
+                Properties.Settings.Default.TableDataXML = "<TableData>" + writer.ToString() + "</TableData>";
+
                 turnsCounter++;
-                Properties.Settings.Default.currentTurn = turnsCounter;
+                Properties.Settings.Default.CurrentTurn = turnsCounter;
                 Properties.Settings.Default.Save();
             }
             catch (Exception ex)
@@ -208,12 +273,14 @@ namespace BonPrint
                     {
                         this.isMonitorRunning = false;
                         monitorBtn.Text = "Iniciar monitoreo del lector";
+                        monitorBtn.BackColor = Color.PaleGreen;
                     }));
                 }
                 else
                 {
                     this.isMonitorRunning = false;
                     monitorBtn.Text = "Iniciar monitoreo del lector";
+                    monitorBtn.BackColor = Color.PaleGreen;
                 }
                 return;
             }
@@ -244,6 +311,7 @@ namespace BonPrint
                     aTimer.Stop();
                     monitorBtn.Text = "Iniciar monitoreo del lector";
                     this.isMonitorRunning = false;
+                    monitorBtn.BackColor = Color.PaleGreen;
                     return;
                 }
                 else
@@ -251,6 +319,7 @@ namespace BonPrint
                     aTimer.Start();
                     monitorBtn.Text = "Detener monitoreo del lector";
                     this.isMonitorRunning = true;
+                    monitorBtn.BackColor = Color.LightCoral;
                     return;
                 }
             }
@@ -263,6 +332,7 @@ namespace BonPrint
                 aTimer.Start();
                 this.isMonitorRunning = true;
                 monitorBtn.Text = "Detener monitoreo del lector";
+                monitorBtn.BackColor = Color.LightCoral;
             }
         }
 
@@ -452,7 +522,7 @@ namespace BonPrint
             }
         }
 
-        private void resetCounterBtn_Click(object sender, EventArgs e)
+        private void resetHistory()
         {
 
             if (InvokeRequired)
@@ -461,18 +531,20 @@ namespace BonPrint
                 {
                     turnsLbl.Text = "Turno -";
                     this.turnsCounter = 1;
-                    Properties.Settings.Default.currentTurn = this.turnsCounter;
-                    Properties.Settings.Default.Save();
+                    Properties.Settings.Default.CurrentTurn = this.turnsCounter;
                     dt.Clear();
+                    Properties.Settings.Default.TableDataXML = "";
+                    Properties.Settings.Default.Save();
                 }));
             }
             else
             {
                 turnsLbl.Text = "Turno -";
                 this.turnsCounter = 1;
-                Properties.Settings.Default.currentTurn = this.turnsCounter;
-                Properties.Settings.Default.Save();
+                Properties.Settings.Default.CurrentTurn = this.turnsCounter;
                 dt.Clear();
+                Properties.Settings.Default.TableDataXML = "";
+                Properties.Settings.Default.Save();
             }
         }
         public static byte[] Protect(byte[] data)

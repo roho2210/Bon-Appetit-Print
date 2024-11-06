@@ -44,7 +44,7 @@
             locatioLbl = new Label();
             locationTbox = new TextBox();
             locationSaveBtn = new Button();
-            resetCounterBtn = new Button();
+            lastResetDateLbl = new Label();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             SuspendLayout();
             // 
@@ -116,11 +116,13 @@
             // 
             // monitorBtn
             // 
-            monitorBtn.BackColor = SystemColors.ControlLightLight;
+            monitorBtn.BackColor = Color.PaleGreen;
+            monitorBtn.FlatAppearance.BorderColor = SystemColors.ControlLightLight;
+            monitorBtn.Font = new Font("Segoe UI", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
             monitorBtn.Location = new Point(11, 116);
             monitorBtn.Margin = new Padding(2, 1, 2, 1);
             monitorBtn.Name = "monitorBtn";
-            monitorBtn.Size = new Size(228, 23);
+            monitorBtn.Size = new Size(233, 41);
             monitorBtn.TabIndex = 8;
             monitorBtn.Text = "Iniciar monitoreo del lector";
             monitorBtn.UseVisualStyleBackColor = false;
@@ -149,7 +151,7 @@
             // 
             turnsLbl.AutoSize = true;
             turnsLbl.Font = new Font("Segoe UI Black", 27.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            turnsLbl.Location = new Point(352, 116);
+            turnsLbl.Location = new Point(335, 106);
             turnsLbl.Name = "turnsLbl";
             turnsLbl.Size = new Size(156, 50);
             turnsLbl.TabIndex = 12;
@@ -191,22 +193,20 @@
             locationSaveBtn.UseVisualStyleBackColor = true;
             locationSaveBtn.Click += LocationSaveBtn_Click;
             // 
-            // resetCounterBtn
+            // lastResetDateLbl
             // 
-            resetCounterBtn.Location = new Point(12, 143);
-            resetCounterBtn.Name = "resetCounterBtn";
-            resetCounterBtn.Size = new Size(227, 23);
-            resetCounterBtn.TabIndex = 15;
-            resetCounterBtn.Text = "Reiniciar contador de turnos";
-            resetCounterBtn.UseVisualStyleBackColor = true;
-            resetCounterBtn.Click += resetCounterBtn_Click;
+            lastResetDateLbl.AutoSize = true;
+            lastResetDateLbl.Location = new Point(340, 152);
+            lastResetDateLbl.Name = "lastResetDateLbl";
+            lastResetDateLbl.Size = new Size(0, 15);
+            lastResetDateLbl.TabIndex = 15;
             // 
             // MainForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(604, 424);
-            Controls.Add(resetCounterBtn);
+            Controls.Add(lastResetDateLbl);
             Controls.Add(locationSaveBtn);
             Controls.Add(locationTbox);
             Controls.Add(locatioLbl);
@@ -222,7 +222,9 @@
             Controls.Add(userTbox);
             Controls.Add(label1);
             Controls.Add(connectBtn);
+            FormBorderStyle = FormBorderStyle.FixedSingle;
             Margin = new Padding(2, 1, 2, 1);
+            MaximizeBox = false;
             Name = "MainForm";
             Text = "BonPrint";
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
@@ -246,6 +248,6 @@
         private Label locatioLbl;
         private TextBox locationTbox;
         private Button locationSaveBtn;
-        private Button resetCounterBtn;
+        private Label lastResetDateLbl;
     }
 }
